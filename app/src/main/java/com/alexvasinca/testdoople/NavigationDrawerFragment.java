@@ -55,7 +55,7 @@ public class NavigationDrawerFragment extends Fragment {
     }
 
 
-    public void setUp(int fragmentId,DrawerLayout drawerLayout, Toolbar toolbar) {
+    public void setUp(int fragmentId, DrawerLayout drawerLayout, final Toolbar toolbar) {
         //we need a reference to the fragment
         //so we pass it from MainActivity and initialize it here
         containterView = getActivity().findViewById(fragmentId);
@@ -82,6 +82,8 @@ public class NavigationDrawerFragment extends Fragment {
                 //same thing as in onDrawerOpened
                 getActivity().invalidateOptionsMenu();
             }
+
+
         };
         //if the user has never seen the drawer and it's the very first time that the fragment is stared
         //display the drawer
