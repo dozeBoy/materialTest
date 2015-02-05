@@ -7,11 +7,15 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class NavigationDrawerFragment extends Fragment {
@@ -22,6 +26,8 @@ public class NavigationDrawerFragment extends Fragment {
     public static final String KEY_USER_LEARNED_DRAWER = "user_learned_drawer";
 
     private ActionBarDrawerToggle mDrawerToggle;
+
+    private MyAdapter adapter;
 
     private DrawerLayout mDrawerLayout;
 
@@ -41,10 +47,10 @@ public class NavigationDrawerFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mUserLearnedDrawer = Boolean.valueOf(readFromPreferences(getActivity(),KEY_USER_LEARNED_DRAWER,"false"));
+        mUserLearnedDrawer = Boolean.valueOf(readFromPreferences(getActivity(), KEY_USER_LEARNED_DRAWER, "false"));
 
         //if savedInstanceState is not null then the user allready accesed it.
-        if(savedInstanceState != null){
+        if (savedInstanceState != null) {
             mFromSavedInstanceState = true;
         }
     }
@@ -56,7 +62,33 @@ public class NavigationDrawerFragment extends Fragment {
 
         View layout = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
         recyclerView = (RecyclerView) layout.findViewById(R.id.drawer_list);
+
+        //initialize the adapter and pass the parameters
+        adapter = new MyAdapter(getActivity(), getData());
+        //set the adapter
+        recyclerView.setAdapter(adapter);
+        //set the layout manager and choose the LinearLayoutManager
+        //because we want the items one below each other.
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         return layout;
+    }
+
+
+    /**
+     * Utility class that returns dummy data to display on the NavDrawer.
+     */
+
+    public static List<Information> getData() {
+        List<Information> data = new ArrayList<>();
+        int[] icon = {R.drawable.ic_next, R.drawable.ic_next, R.drawable.ic_next, R.drawable.ic_next};
+        String[] text = {"First", "Second", "Third", "Fourth"};
+        for (int i = 0; i < text.length && i < icon.length; i++) {
+            Information current = new Information();
+            current.iconId = icon[i];
+            current.title = text[i];
+            data.add(current);
+        }
+        return data;
     }
 
 
@@ -65,7 +97,7 @@ public class NavigationDrawerFragment extends Fragment {
         //so we pass it from MainActivity and initialize it here
         containterView = getActivity().findViewById(fragmentId);
         mDrawerLayout = drawerLayout;
-        mDrawerToggle = new ActionBarDrawerToggle(getActivity(),drawerLayout,toolbar,R.string.drawer_open,R.string.drawer_close){
+        mDrawerToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
@@ -73,9 +105,9 @@ public class NavigationDrawerFragment extends Fragment {
                 //it means that this is the first access and we save that to prefs
 
                 //mUserLearnedDrawer+"" is conversion to string
-                if(!mUserLearnedDrawer){
+                if (!mUserLearnedDrawer) {
                     mUserLearnedDrawer = true;
-                    saveToPreferences(getActivity(),KEY_USER_LEARNED_DRAWER,mUserLearnedDrawer+"");
+                    saveToPreferences(getActivity(), KEY_USER_LEARNED_DRAWER, mUserLearnedDrawer + "");
                 }
                 //invalidateOptionsMenu makes the activity to redraw the actionbar again
                 getActivity().invalidateOptionsMenu();
@@ -92,7 +124,7 @@ public class NavigationDrawerFragment extends Fragment {
         };
         //if the user has never seen the drawer and it's the very first time that the fragment is stared
         //display the drawer
-        if(!mUserLearnedDrawer && !mFromSavedInstanceState){
+        if (!mUserLearnedDrawer && !mFromSavedInstanceState) {
             mDrawerLayout.openDrawer(containterView);
         }
         mDrawerLayout.setDrawerListener(mDrawerToggle);
