@@ -21,8 +21,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     * A ViewHolder describes an item view and metadata about its place within the RecyclerView.
     * It means that the viewHolder will represent my icon and the text next to it in the NavDrawer.
     * */
+
+    //Used to store and pass the object that implements to the interface
     private ClickListener clickListener;
+
     private Context context;
+
     private LayoutInflater inflater;
 
     List<Information> data = Collections.emptyList();
@@ -54,6 +58,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.icon.setImageResource(current.iconId);
     }
 
+    /*
+    *  Sets the object that implements the interface
+    * */
     public void setClickListener(ClickListener clickListener) {
         this.clickListener = clickListener;
     }
