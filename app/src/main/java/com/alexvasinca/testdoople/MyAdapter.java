@@ -1,7 +1,9 @@
 package com.alexvasinca.testdoople;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +21,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     * A ViewHolder describes an item view and metadata about its place within the RecyclerView.
     * It means that the viewHolder will represent my icon and the text next to it in the NavDrawer.
     * */
-
-
+    private ClickListener clickListener;
+    private Context context;
     private LayoutInflater inflater;
 
     List<Information> data = Collections.emptyList();
@@ -28,6 +30,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public MyAdapter(Context context, List<Information> data) {
         inflater = LayoutInflater.from(context);
         this.data = data;
+        this.context = context;
     }
 
     @Override
@@ -38,6 +41,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         //The Layout Inflater converts XML appearance definition into View objects
         //It's a time consuming operation as it's recursively convert all XML children into objects
         View view = inflater.inflate(R.layout.custom_row, viewGroup, false);
+        Log.d("Alex", "onCreateViewHolder called");
         MyViewHolder holder = new MyViewHolder(view);
         return holder;
     }
@@ -45,8 +49,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(MyViewHolder holder, int i) {
         Information current = data.get(i);
+        Log.d("Alex", "onBindViewHolder called " + i);
         holder.text.setText(current.title);
         holder.icon.setImageResource(current.iconId);
+    }
+
+    public void setClickListener(ClickListener clickListener) {
+        this.clickListener = clickListener;
     }
 
     @Override
@@ -64,14 +73,27 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     *  because findById and always creating new objects are expensive operations
     *  that mai affect performance of the device.
     * */
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView text;
         ImageView icon;
 
         public MyViewHolder(View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
             text = (TextView) itemView.findViewById(R.id.listText);
             icon = (ImageView) itemView.findViewById(R.id.listIcon);
         }
+
+        @Override
+        public void onClick(View v) {
+            context.startActivity(new Intent(context, SubActivity.class));
+            if (clickListener != null) {
+                clickListener.itemClicked(v, getPosition());
+            }
+        }
+    }
+
+    public interface ClickListener {
+        public void itemClicked(View view, int position);
     }
 }
