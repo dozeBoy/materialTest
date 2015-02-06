@@ -42,6 +42,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoViewHolder
         holder.vName.setText(cardInfo.name);
         holder.vSurname.setText(cardInfo.surName);
         holder.vEmail.setText(cardInfo.email);
+        holder.vAdress.setText(cardInfo.adress);
         holder.vTitle.setText(cardInfo.name + " " + cardInfo.surName);
     }
 
@@ -55,6 +56,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoViewHolder
         protected TextView vName;
         protected TextView vSurname;
         protected TextView vEmail;
+        protected TextView vAdress;
         protected TextView vTitle;
 
         public InfoViewHolder(View itemView) {
@@ -63,6 +65,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoViewHolder
             vSurname = (TextView) itemView.findViewById(R.id.textSurname);
             vEmail = (TextView) itemView.findViewById(R.id.textEmail);
             vTitle = (TextView) itemView.findViewById(R.id.title);
+            vAdress = (TextView) itemView.findViewById(R.id.textAdress);
         }
 
 

@@ -58,6 +58,7 @@ public class MainActivity extends ActionBarActivity {
             cardInfo.name = CardInfo.NAME_PREFIX + i;
             cardInfo.surName = CardInfo.SURNAME_PREFIX + i;
             cardInfo.email = CardInfo.EMAIL_PREFIX + i;
+            cardInfo.adress = CardInfo.ADRESS_PREFIX + i;
 
             result.add(cardInfo);
         }

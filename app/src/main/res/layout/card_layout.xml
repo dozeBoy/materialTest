@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="5dp"
     card_view:cardCornerRadius="2dp"
-    card_view:cardElevation="30dp"
+    card_view:cardElevation="40dp"
     card_view:cardUseCompatPadding="true"
     card_view:cardBackgroundColor="@color/cardview_initial_background">
 
@@ -34,8 +34,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center_vertical"
             android:textColor="@android:color/white"
-            android:text="Name"
-            android:textSize="10dp" />
+            android:text="Name" />
 
         <TextView
             android:textColor="@android:color/white"
@@ -47,8 +46,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
             android:gravity="center_vertical"
-            android:text="Surname"
-            android:textSize="10dp" />
+            android:text="Surname" />
 
         <TextView
             android:textColor="@android:color/white"
@@ -58,18 +56,23 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/textName"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="150dp"
+            android:layout_marginRight="5dp"
             android:layout_marginTop="10dp"
             android:text="Email" />
 
         <TextView
+            android:textColor="@android:color/white"
             android:padding="15dp"
             android:id="@+id/textAdress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/textSurname"
-            android:layout_alignStart="@id/textEmail"
-            android:textSize="10dp" />
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:text="Adress" />
+
+
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>
