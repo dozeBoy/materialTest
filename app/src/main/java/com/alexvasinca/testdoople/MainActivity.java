@@ -35,7 +35,7 @@ public class MainActivity extends ActionBarActivity {
 
         recList.setLayoutManager(linearLayoutManager);
 
-        InfoAdapter infoAdapter = new InfoAdapter(createList(30));
+        InfoAdapter infoAdapter = new InfoAdapter(createList(7));
         recList.setAdapter(infoAdapter);
 
 

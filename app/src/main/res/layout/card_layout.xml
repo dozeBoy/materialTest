@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     android:layout_margin="5dp"
     card_view:cardCornerRadius="2dp"
-    card_view:cardElevation="4dp"
-    card_view:cardUseCompatPadding="true">
+    card_view:cardElevation="30dp"
+    card_view:cardUseCompatPadding="true"
+    card_view:cardBackgroundColor="@color/cardview_initial_background">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,11 +20,12 @@
             android:layout_height="20dp"
             android:background="@color/bkg_card"
             android:gravity="center_vertical"
-            android:text="Contact Details"
+            android:text="Day"
             android:textColor="@android:color/white"
             android:textSize="14dp" />
 
         <TextView
+            android:padding="15dp"
             android:id="@+id/textName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,10 +33,13 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
             android:gravity="center_vertical"
+            android:textColor="@android:color/white"
             android:text="Name"
             android:textSize="10dp" />
 
         <TextView
+            android:textColor="@android:color/white"
+            android:padding="15dp"
             android:id="@+id/textSurname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,6 +51,8 @@
             android:textSize="10dp" />
 
         <TextView
+            android:textColor="@android:color/white"
+            android:padding="15dp"
             android:id="@+id/textEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,6 +63,7 @@
             android:text="Email" />
 
         <TextView
+            android:padding="15dp"
             android:id="@+id/textAdress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
