@@ -21,8 +21,11 @@
             android:label="@string/title_activity_sub">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"></meta-data>
+                android:value=".MainActivity" />
         </activity>
+        <activity
+            android:name=".SecondaryActivity"
+            android:label="@string/title_activity_secondary"></activity>
     </application>
 
 </manifest>

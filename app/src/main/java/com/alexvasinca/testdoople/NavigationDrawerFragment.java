@@ -2,6 +2,7 @@ package com.alexvasinca.testdoople;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class NavigationDrawerFragment extends Fragment {
+public class NavigationDrawerFragment extends Fragment implements MyAdapter.ClickListener {
     private RecyclerView recyclerView;
 
     public static final String PREF_FILE_NAME = "testpref";
@@ -65,6 +66,9 @@ public class NavigationDrawerFragment extends Fragment {
 
         //initialize the adapter and pass the parameters
         adapter = new MyAdapter(getActivity(), getData());
+        //this indicates that the fragment is the object that implements the ClickListener
+
+        adapter.setClickListener(this);
         //set the adapter
         recyclerView.setAdapter(adapter);
         //set the layout manager and choose the LinearLayoutManager
@@ -80,8 +84,10 @@ public class NavigationDrawerFragment extends Fragment {
 
     public static List<Information> getData() {
         List<Information> data = new ArrayList<>();
-        int[] icon = {R.drawable.ic_next, R.drawable.ic_next, R.drawable.ic_next, R.drawable.ic_next};
-        String[] text = {"First", "Second", "Third", "Fourth"};
+
+        int[] icon = {R.drawable.ic_next, R.drawable.ic_next, R.drawable.ic_next, R.drawable.ic_next, R.drawable.ic_next, R.drawable.ic_next, R.drawable.ic_next, R.drawable.ic_next, R.drawable.ic_next};
+
+        String[] text = {"First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth"};
         for (int i = 0; i < text.length && i < icon.length; i++) {
             Information current = new Information();
             current.iconId = icon[i];
@@ -146,6 +152,11 @@ public class NavigationDrawerFragment extends Fragment {
     private static String readFromPreferences(Context context, String preferenceName, String defaultValue) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(preferenceName, defaultValue);
+    }
+
+    @Override
+    public void itemClicked(View view, int position) {
+        startActivity(new Intent(getActivity(), SubActivity.class));
     }
 }
 
