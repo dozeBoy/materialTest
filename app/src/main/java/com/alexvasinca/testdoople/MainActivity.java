@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.melnykov.fab.FloatingActionButton;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +37,7 @@ public class MainActivity extends ActionBarActivity {
 
         recList.setLayoutManager(linearLayoutManager);
 
-        InfoAdapter infoAdapter = new InfoAdapter(createList(7));
+        InfoAdapter infoAdapter = new InfoAdapter(createList(5));
         recList.setAdapter(infoAdapter);
 
 
@@ -47,6 +49,9 @@ public class MainActivity extends ActionBarActivity {
 
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (android.support.v4.widget.DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.attachToRecyclerView(recList);
 
     }
 

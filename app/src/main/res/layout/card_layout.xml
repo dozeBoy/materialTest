@@ -3,11 +3,10 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    card_view:cardCornerRadius="2dp"
-    card_view:cardElevation="40dp"
-    card_view:cardUseCompatPadding="true"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardElevation="30dp"
     card_view:cardBackgroundColor="@color/cardview_initial_background">
 
     <RelativeLayout
@@ -18,7 +17,7 @@
             android:id="@id/title"
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:background="@color/bkg_card"
+            android:background="@color/cardview_initial_background"
             android:gravity="center_vertical"
             android:text="Day"
             android:textColor="@android:color/white"
