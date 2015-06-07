@@ -87,7 +87,7 @@ public class NavigationDrawerFragment extends Fragment implements MyAdapter.Clic
 
         int[] icon = {R.drawable.ic_next, R.drawable.ic_next, R.drawable.ic_next, R.drawable.ic_next, R.drawable.ic_next, R.drawable.ic_next, R.drawable.ic_next, R.drawable.ic_next, R.drawable.ic_next};
 
-        String[] text = {"First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth"};
+        String[] text = {"GoogleMap", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth"};
         for (int i = 0; i < text.length && i < icon.length; i++) {
             Information current = new Information();
             current.iconId = icon[i];

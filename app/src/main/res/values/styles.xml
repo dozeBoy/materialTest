@@ -12,5 +12,12 @@
         <item name="android:windowBackground">@android:color/white</item>
     </style>
 
+    <style name="Animations" />
+    <style name="Animations.SplashScreen">
+        <item name="android:windowEnterAnimation">@anim/appear</item>
+        <item name="android:windowExitAnimation">@anim/dissapear</item>
+    </style>
+
+
 
 </resources>
